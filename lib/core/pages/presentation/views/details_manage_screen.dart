@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:weboapp_pocket/constants/color.dart';
+import 'package:weboapp_pocket/core/home/views/perfomance_progres.dart';
 import 'package:weboapp_pocket/core/pages/presentation/controller/details_manage_controller.dart';
 
 class DetailsManage extends GetView<DetailsManageController> {
@@ -12,7 +13,11 @@ class DetailsManage extends GetView<DetailsManageController> {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30),
         child: ListView(
-          children: [_salaryStructure(context)],
+          children: [
+            _salaryStructure(context),
+            Gap(30),
+            _progressView(context)
+          ],
         ),
       ),
     );
@@ -54,9 +59,12 @@ Widget _vertcalPaymentdetails(BuildContext context) {
           backgroundColor: Colors.transparent,
           elevation: 0,
           actions: [
-            IconButton(
-              icon: Icon(Icons.picture_as_pdf),
-              onPressed: () => controller.generatePDF(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                icon: Icon(Icons.picture_as_pdf),
+                onPressed: () => controller.generatePDF(),
+              ),
             ),
           ],
         ),
@@ -70,6 +78,21 @@ Widget _vertcalPaymentdetails(BuildContext context) {
           ),
         ),
       ],
+    ),
+  );
+}
+
+Widget _progressView(BuildContext context) {
+  final screenSize = MediaQuery.of(context).size;
+  return Center(
+    child: Container(
+      height: screenSize.height * 0.29,
+      width: screenSize.width * 0.93,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: const Color.fromARGB(255, 200, 217, 219),
+      ),
+      // child: PerfomanceProgressScreenView(),
     ),
   );
 }

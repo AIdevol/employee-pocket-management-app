@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProfileDrawerScreenControllerr extends GetxController with SingleGetTickerProviderMixin {
+class ProfileDrawerScreenControllerr extends GetxController
+    with SingleGetTickerProviderMixin {
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController roleController = TextEditingController();
@@ -21,10 +22,12 @@ class ProfileDrawerScreenControllerr extends GetxController with SingleGetTicker
       vsync: this,
       duration: Duration(milliseconds: 300),
     );
-    animation = Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset(0.0, 0.0)).animate(
+    animation =
+        Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset(0.0, 0.0))
+            .animate(
       CurvedAnimation(
         parent: animationController,
-        curve: Curves.easeInToLinear,
+        curve: Curves.easeInOut,
       ),
     );
     animationController.forward();
