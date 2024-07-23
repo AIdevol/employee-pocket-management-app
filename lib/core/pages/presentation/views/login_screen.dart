@@ -106,7 +106,7 @@ class LoginScreen extends GetView<LoginScreenController> {
                                           Get.snackbar(
                                             'Login',
                                             'Successfully logged in',
-                                            snackPosition: SnackPosition.BOTTOM,
+                                            snackPosition: SnackPosition.TOP,
                                           );
                                           Get.offAll(() => HomeScreen());
                                         }
