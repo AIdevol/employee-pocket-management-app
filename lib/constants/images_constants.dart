@@ -4,3 +4,4 @@ const String appIcon =
 const String menuIcons = 'assets/icons/text.png';
 const String menuIcons2 = 'assets/icons/menu-bar.png';
 const String calenderIcon = 'assets/icons/calender.png';
+const String details = 'assets/icons/details.png';

@@ -9,112 +9,146 @@ class SimpleDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.only(
-        topRight: Radius.circular(1),
-        bottomRight: Radius.circular(1),
-      ),
-      child: Drawer(
-        shadowColor: Colors.grey,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blueGrey, // Update as needed
-              ),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage(appIcon),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Devesh Tiwari',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+    final drawersize = MediaQuery.of(context).size;
+    return Container(
+      width: drawersize.width * 0.65,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(1),
+          bottomRight: Radius.circular(1),
+        ),
+        child: Drawer(
+          shadowColor: Colors.grey,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey, // Update as needed
+                ),
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundImage: AssetImage(appIcon),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 10),
+                    Text(
+                      'Devesh Tiwari',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontFamily: 'Quicksand_bold',
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            ListTile(
-              leading: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.home),
-              ),
-              title: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: Text('Home'),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
+              ListTile(
                 leading: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Icon(Icons.settings),
+                  child: Icon(Icons.home),
                 ),
                 title: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
-                  child: Text('Settings'),
+                  child: Text(
+                    'Home',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'Quicksand_bold',
+                    ),
+                  ),
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                }
-                // () {
-                // ProfileDrawerScreen();
-                // showModalBottomSheet(
-                //   context: context,
-                //   isScrollControlled: true,
-                //   builder: (context) => ProfileDrawerScreen(),
-                // );
-                // },
+                },
+              ),
+              ListTile(
+                  leading: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Icon(Icons.settings),
+                  ),
+                  title: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    child: Text(
+                      'Settings',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'Quicksand_bold',
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  }
+                  // () {
+                  // ProfileDrawerScreen();
+                  // showModalBottomSheet(
+                  //   context: context,
+                  //   isScrollControlled: true,
+                  //   builder: (context) => ProfileDrawerScreen(),
+                  // );
+                  // },
+                  ),
+              ListTile(
+                leading: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Icon(Icons.contacts),
                 ),
-            ListTile(
-              leading: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.contacts),
+                title: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  child: Text(
+                    'Blogs',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'Quicksand_bold',
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
-              title: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: Text('Blogs'),
+              ListTile(
+                leading: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Icon(Icons.local_laundry_service_sharp),
+                ),
+                title: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  child: Text(
+                    'Leave',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'Quicksand_bold',
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.local_laundry_service_sharp),
+              ListTile(
+                leading: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Icon(Icons.info),
+                ),
+                title: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  child: Text(
+                    'Github View',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'Quicksand_bold',
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
-              title: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: Text('Leave'),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.info),
-              ),
-              title: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: Text('Github View'),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

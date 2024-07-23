@@ -21,7 +21,9 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.onChanged,
     this.prefixIcon,
-    this.suffixIcon, required maxLines, required bool expands,
+    this.suffixIcon,
+    required maxLines,
+    required bool expands,
   }) : super(key: key);
 
   @override

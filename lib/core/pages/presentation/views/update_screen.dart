@@ -26,8 +26,8 @@ class UpdateViewScreen extends GetView<UpdateScreenController> {
             child: Column(
               children: [
                 _imageView(),
-                Gap(20),
-                Padding(
+                const Gap(20),
+                const Padding(
                   padding: EdgeInsets.only(left: 20),
                   child: Text(
                     text1,
@@ -116,17 +116,20 @@ class UpdateViewScreen extends GetView<UpdateScreenController> {
             },
           ),
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            minimumSize: const Size(330, 50),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size(330, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
             ),
-          ),
-          onPressed: () {},
-          child: const Text(
-            'Submit',
-            style: TextStyle(fontSize: 15, fontFamily: 'Quicksand_bold'),
+            onPressed: () {},
+            child: const Text(
+              'Submit',
+              style: TextStyle(fontSize: 15, fontFamily: 'Quicksand_bold'),
+            ),
           ),
         ),
       ],
@@ -135,7 +138,9 @@ class UpdateViewScreen extends GetView<UpdateScreenController> {
 
   Widget _calendarView(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 20),
+      padding: const EdgeInsets.only(
+        right: 20,
+      ),
       child: Container(
         height: 50,
         width: 50,
@@ -146,8 +151,8 @@ class UpdateViewScreen extends GetView<UpdateScreenController> {
         child: InkWell(
           onTap: () => _showCalendarDialog(context),
           child: Icon(
-            Icons.arrow_drop_down_sharp,
-            size: 35,
+            Icons.calendar_month,
+            size: 25,
           ),
         ),
       ),
@@ -159,7 +164,13 @@ class UpdateViewScreen extends GetView<UpdateScreenController> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Calendar'),
+          title: const Text(
+            'Calendar',
+            style: TextStyle(
+              fontSize: 15,
+              fontFamily: 'Quicksand_Regular',
+            ),
+          ),
           content: Container(
             width: double.maxFinite,
             child: Column(
@@ -173,7 +184,7 @@ class UpdateViewScreen extends GetView<UpdateScreenController> {
                     // Handle date change
                   },
                 ),
-                SizedBox(height: 20),
+                // SizedBox(height: 20),
                 Text(
                   'Current Time: ${TimeOfDay.now().format(context)}',
                   style: TextStyle(fontSize: 16),
@@ -188,7 +199,13 @@ class UpdateViewScreen extends GetView<UpdateScreenController> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Close'),
+              child: const Text(
+                'Close',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Quicksand_Regular',
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },

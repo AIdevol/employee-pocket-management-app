@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:weboapp_pocket/boats/view/chat_screen.dart';
+import 'package:weboapp_pocket/constants/imageAnimation.dart';
 import 'package:weboapp_pocket/constants/images_constants.dart';
 import 'package:weboapp_pocket/core/component/ChartView_screen_presentation.dart';
 import 'package:weboapp_pocket/core/component/appbar_views.dart';
@@ -10,6 +12,7 @@ import 'package:weboapp_pocket/core/component/bottom_navigations.dart';
 import 'package:weboapp_pocket/core/component/drawer.dart';
 import 'package:weboapp_pocket/core/component/progress_chart_screen.dart';
 import 'package:weboapp_pocket/core/component/table_view.dart';
+import 'package:weboapp_pocket/core/pages/presentation/views/details_manage_screen.dart';
 import 'package:weboapp_pocket/core/pages/presentation/views/update_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _children = [
     Center(child: _screenView()),
-    Center(child: InkWell(onTap: () {}, child: const Text('search'))),
+    Center(child: _detailsView()),
     Center(child: UpdateViewScreen()),
     Center(child: InkWell(onTap: () {}, child: Text('settings'))), // New Screen
     Center(
@@ -45,11 +48,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppbarViews(),
       drawer: SimpleDrawer(),
-      body: _children[_currentIndex],
+      body: Stack(
+        children: [
+          _children[_currentIndex],
+          Positioned(
+            bottom: screenSize.height * 0.04,
+            right: screenSize.height * 0.04,
+            child: _chatviewState(),
+          ),
+        ],
+      ),
       bottomNavigationBar: Container(
         height: 70,
         width: 70,
@@ -64,9 +77,13 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.home),
               label: 'Home',
             ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Search',
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                details,
+                height: 22,
+                width: 22,
+              ),
+              label: 'Details',
             ),
             BottomNavigationBarItem(
               icon: Image.asset(
@@ -81,10 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  // _chartView({required BuildContext context}) {
-  //   return
-  // }
 }
 
 Widget _screenView() {
@@ -132,8 +145,9 @@ _progressState() {
       height: Get.height * 0.26,
       width: Get.width,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: Color.fromARGB(255, 200, 217, 219)),
+        borderRadius: BorderRadius.circular(25),
+        color: Color.fromARGB(255, 200, 217, 219),
+      ),
       child: ProgressStateView(),
     ),
   );
@@ -146,9 +160,35 @@ _tableViewState() {
       height: Get.height * 0.26,
       width: Get.width,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: Color.fromARGB(255, 200, 217, 219)),
+        borderRadius: BorderRadius.circular(25),
+        color: Color.fromARGB(255, 200, 217, 219),
+      ),
       child: TableViewState(),
     ),
+  );
+}
+
+_chatviewState() {
+  return InkWell(
+      onTap: () => Get.to(ChatScreen()),
+      child: CircleAvatar(
+        backgroundColor: Colors.blueGrey,
+        radius: 30,
+        child: ClipOval(
+          child: Image.asset(
+            chatboat,
+            width: 70,
+            height: 70,
+            scale: 1,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ));
+}
+
+_detailsView() {
+  return InkWell(
+    onTap: () {},
+    child: DetailsManage(),
   );
 }
